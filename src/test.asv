@@ -1,0 +1,7 @@
+code_dir = strcat(pwd,"//src");
+
+data_dir = strcat(pwd,"//data");
+
+img1,img2 = load(strcat(data_dir, "//img_restoration.mat"));
+% cd(data_dir)
+% % Load the data
