@@ -39,10 +39,20 @@ imshow(Noised1)
 subplot(1,2,2)
 imshow(Noised2)
 
+% Implement Inverse filters and observe the trade-offs
+
+Inverse_img1=Inverse_filter_noise(F_noise1);
+Inverse_img2=Inverse_filter_noise(F_noise2);
+
+figure
+subplot(1,2,1)
+imshow(Inverse_img1)
+subplot(1,2,2)
+imshow(Inverse_img2)
 % Implement Wiener filters and observe the trade-offs
 
-Wiener_img1=Wiener_img(F_noise1,0.05);
-Wiener_img2=Wiener_img(F_noise2,0.05);
+Wiener_img1=Wiener_img(F_noise1,0.04);
+Wiener_img2=Wiener_img(F_noise2,0.04);
 figure
 subplot(1,2,1)
 imshow(Wiener_img1)

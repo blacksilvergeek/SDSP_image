@@ -1,7 +1,9 @@
 function F_img1_blur = motion_blur(img1,u,v)
 
 %% Simulate a Motion Blur：H(u,v)
-T=1;a=0.02;b=0.02;
+global a
+global b
+T=1;a=0.05;b=0.05;
 [M,N]=size(img1);
 
 

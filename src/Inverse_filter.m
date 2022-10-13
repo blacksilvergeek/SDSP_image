@@ -1,6 +1,7 @@
 function img_inverse=Inverse_filter(F_img1_blur,u,v)
-
-T=1;a=0.02;b=0.02;
+global a
+global b
+T=1;
 [M,N]=size(F_img1_blur);
 
 

@@ -1,8 +1,8 @@
-function W_filter=Wiener_img(noise_fft,K,u,v)
+function img_inverse_noise=Inverse_filter_noise(F_noise,u,v)
 global a
 global b
-T=1;a=0.05;b=0.05;
-[M,N]=size(noise_fft);
+T=1;
+[M,N]=size(F_noise);
 
 
 if(~exist('v','var'))
@@ -17,7 +17,6 @@ H=T/pi./A.*sin(pi.*A).*exp(-1i*pi.*A);
 
 H(A==0)=T;% replace NAN
 
-buf=(abs(H)).^2;
+img_inverse_noise=F_noise./H; % Inverse_noise
 
-F_Wiener=noise_fft./H.*buf./(buf+K);
-W_filter=real(ifft2(ifftshift(F_Wiener)));
+img_inverse_noise=real(ifft2(ifftshift(img_inverse_noise)));
