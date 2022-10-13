@@ -1,8 +1,7 @@
-function F_img1_blur = motion_blur(img1,u,v)
+function W_filter=Wiener_img(noise_fft,K,u,v)
 
-%% Simulate a Motion Blur：H(u,v)
 T=1;a=0.02;b=0.02;
-[M,N]=size(img1);
+[M,N]=size(noise_fft);
 
 
 if(~exist('v','var'))
@@ -17,19 +16,7 @@ H=T/pi./A.*sin(pi.*A).*exp(-1i*pi.*A);
 
 H(A==0)=T;% replace NAN
 
-[X,Y] = meshgrid(1:220,1:220);
-% surf(X,Y,abs(H))
+buf=(abs(H)).^2;
 
-
-F_img1=fftshift(fft2(img1));
-F_img1_blur=F_img1.*H;
-
-
-
-
-
-
-
-% figure
-% subplot(1,2,1)
-% imshow(img_Blurred)
+F_Wiener=noise_fft./H.*buf./(buf+K);
+W_filter=real(ifft2(ifftshift(F_Wiener)));

@@ -1,8 +1,7 @@
-function F_img1_blur = motion_blur(img1,u,v)
+function img_inverse=Inverse_filter(F_img1_blur,u,v)
 
-%% Simulate a Motion Blur：H(u,v)
 T=1;a=0.02;b=0.02;
-[M,N]=size(img1);
+[M,N]=size(F_img1_blur);
 
 
 if(~exist('v','var'))
@@ -17,19 +16,7 @@ H=T/pi./A.*sin(pi.*A).*exp(-1i*pi.*A);
 
 H(A==0)=T;% replace NAN
 
-[X,Y] = meshgrid(1:220,1:220);
-% surf(X,Y,abs(H))
 
+img_inverse=F_img1_blur./H; % Inverse
 
-F_img1=fftshift(fft2(img1));
-F_img1_blur=F_img1.*H;
-
-
-
-
-
-
-
-% figure
-% subplot(1,2,1)
-% imshow(img_Blurred)
+img_inverse=real(ifft2(ifftshift(img_inverse)));
