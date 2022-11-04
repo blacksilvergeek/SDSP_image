@@ -8,4 +8,4 @@ noise=imnoise(zeros(M), 'gaussian', noise_mean, noise_var);
 
 FFTnoise=fftshift(fft2(noise));
 
-F_noise=FFTnoise + F_img1_blur
+F_noise=FFTnoise + F_img1_blur;
